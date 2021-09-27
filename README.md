@@ -41,8 +41,8 @@ curl --location --request POST 'http://localhost:8001/services/{service_name_or_
 
 In the above sample, we are looking for the combination of couple of headers.
 
-If channel=online && cardType=visa, route the call to httpbin.org
-If channel=stores && cardType=master, route the call to mocktarget.apigee.net
+If channel=online && cardType=visa, route the call to httpbin.org <br/>
+If channel=stores && cardType=master, route the call to mocktarget.apigee.net <br/>
 
 If none matches, route it to default host configured.
 
