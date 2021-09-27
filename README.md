@@ -10,8 +10,8 @@ Kong >= 1.0.x
 ## Installation
 Recommended:
 
-git clone https://github.com/RagunathInGIT/multi-header-based-route.git /path/to/kong/plugins/multi-header-based-route
-cd /path/to/kong/plugins/multi-header-based-route
+git clone https://github.com/RagunathInGIT/multi-header-based-route.git /path/to/kong/plugins/multi-header-based-route <br/>
+cd /path/to/kong/plugins/multi-header-based-route<br/>
 luarocks make *.rockspec
 
 ## Configurations
