@@ -49,3 +49,7 @@ If none matches, route it to default host configured.
 Similar config can be applied with OR operator where if one of the element in the combination is met, plugin will route to the corresponding target reference.
 
 ## Maintainers
+
+Ragunath Sudalaimuthu (@RagunathInGIT)<br/>
+scraptoraghu@gmail.com
+
