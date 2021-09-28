@@ -29,22 +29,22 @@ luarocks make *.rockspec
 
 curl --location --request POST 'http://localhost:8001/services/{service_name_or_service_id}/plugins' \
 --data 'name=multi-header-based-route' \
---data 'config.default_host=mocktarget.apigee.net' \
+--data 'config.default_host=customercare.free.beeceptor.com' \
 --data 'config.header_count=2' \
 --data 'config.operator=AND' \
 --data 'config.headerdetails.list=channel|online:target_1' \
 --data 'config.headerdetails.list=cardType|visa:target_1' \
 --data 'config.headerdetails.list=channel|stores:target_2' \
 --data 'config.headerdetails.list=cardType|master:target_2' \
---data 'config.targetdetails.list=target_1|stores:httpbin.org|443' \
---data 'config.targetdetails.list=target_2|master:mocktarget.apigee.net'
+--data 'config.targetdetails.list=target_1:online.free.beeceptor.com|443' \
+--data 'config.targetdetails.list=target_2:stores.free.beeceptor.com|443'
 
 In the above sample, we are looking for the combination of couple of headers.
 
-If channel=online && cardType=visa, route the call to httpbin.org <br/>
-If channel=stores && cardType=master, route the call to mocktarget.apigee.net <br/>
+If channel=online && cardType=visa, route the call to online.free.beeceptor.com <br/>
+If channel=stores && cardType=master, route the call to stores.free.beeceptor.com <br/>
 
-If none matches, route it to default host configured.
+If none matches, route it to default host customercare.free.beeceptor.com that is configured. 
 
 Similar config can be applied with OR operator where if one of the element in the combination is met, plugin will route to the corresponding target reference.
 
