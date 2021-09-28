@@ -56,19 +56,19 @@ function _M.execute(conf)
             targetValue = header_value
         end
 
-        if (count == header_name and operator == "AND") or (count > 0 and operator == "OR") then
+        if (count == header_count and operator == "AND") or (count > 0 and operator == "OR") then
             break
         end
     end
 
     for _, header_name, header_value in iter(conf.targetdetails.list) do
         local splitTarget = Split(header_value, "|")
-        if targetValue == header_name and count == header_name and operator == "AND" then
+        if targetValue == header_name and count == header_count and operator == "AND" then
             ngx.req.set_header("Host", splitTarget[1])
             kong.service.set_target(splitTarget[1], tonumber(splitTarget[2]))
             targetFound = true
             break
-        elseif targetValue == header_name and count > 0 and count <= header_name and operator == "OR" then
+        elseif targetValue == header_name and count > 0 and count <= header_count and operator == "OR" then
             ngx.req.set_header("Host", splitTarget[1])
             kong.service.set_target(splitTarget[1], tonumber(splitTarget[2]))
             targetFound = true
@@ -76,7 +76,7 @@ function _M.execute(conf)
         end
     end
 
-    if targetFound == true then
+    if targetFound == false then
         ngx.req.set_header("Host", default_host)
         kong.service.set_target(default_host, 443)
     end
